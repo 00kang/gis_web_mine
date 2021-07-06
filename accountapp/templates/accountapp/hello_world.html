@@ -1,7 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <style>
+        .testing {
+            background-color: yellow;
+            width: 48px;
+            height: 48px;
+            border-radius: .5rem;
+            margin: 1.5rem;
+        }
+
+    </style>
+
     <div style="height:10rem; background-color:aqua; border-radius:1rem; margin:2rem">
         <h1>TEST</h1>
+    <div class="testing" style="display: block"> block block</div>
+    <div class="testing" style="display: inline"> inline block</div>
+    <div class="testing" style="display: inline-block"> inline-block block</div>
+    <div class="testing" style="display: none"> block</div>
+    <div class="testing">default</div>
+
     </div>
 {% endblock %}
