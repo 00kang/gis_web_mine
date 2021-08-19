@@ -14,7 +14,6 @@
           justify-content: center;
           align-items: center;
           border-radius: 1rem;
-            box-shadow: 0 0 .5rem grey;
             flex-direction: column;
         }
 
@@ -27,14 +26,14 @@
     </style>
 
     <div class="container my-4">
-        {% for project in project_listproject %}
+        {% for project in project_list %}
             <div>
                 <a href="{% url 'projectapp:detail' pk=project.pk %}">
                     <img src="{{ project.image.url }}"
                          alt="">
                 </a>
                 <span class="m-2 NNS_B">
-                    {{ project.name }}
+                    {{ project.name | truncatechars:10}}
                 </span>
             </div>
         {% endfor %}
