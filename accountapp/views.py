@@ -15,25 +15,10 @@ from accountapp.models import HelloWorld
 from articleapp.models import Article
 
 
-@login_required
-def hello_world(request):
-    if request.method == "POST":
-        temp = request.POST.get('hello_world_input')
-        new_hello_world = HelloWorld()
-        new_hello_world.text = temp
-        new_hello_world.save()
-        return HttpResponseRedirect(reverse('accountapp:hello_world'))
-
-    else:
-        hello_world_list = HelloWorld.objects.all()
-        return render(request, 'accountapp/hello_world.html',
-                      context={'hello_world_list': hello_world_list})
-
-
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('articleapp:list')
     template_name = 'accountapp/create.html'
 
 
@@ -48,8 +33,8 @@ class AccountDetailView(DetailView):
         article_list = Article.objects.filter(writer=self.object)
         return super().get_context_data(object_list=article_list, **kwargs)
 
-
 has_ownership = [login_required, account_ownership_required]
+
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
@@ -68,5 +53,5 @@ class AccountUpdateView(UpdateView):
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('articleapp:list')
     template_name = 'accountapp/delete.html'
