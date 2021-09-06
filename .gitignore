@@ -84,3 +84,6 @@ __pycache__/
 media/
 
 staticfiles/
+
+dabin_gcp
+dabin_gcp.pub
