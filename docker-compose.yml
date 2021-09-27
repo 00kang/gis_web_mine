@@ -19,6 +19,8 @@ services:
     volumes:
       - dabin_static:/home/gis_web_1/staticfiles/
       - dabin_media:/home/gis_web_1/media/
+    secrets:
+      - DJANGO_SECRET_KEY
 
   mariadb:
     image: mariadb:10.5
@@ -40,3 +42,7 @@ volumes:
   dabin_static:
   dabin_media:
   gis_mariadb:
+
+secrets:
+  DJANGO_SECRET_KEY:
+    external: true
