@@ -13,12 +13,24 @@ services:
       - dabin_media:/data/media/
 
   django:
-    image: dabin_django:3
+    image: dabin_django:4
     networks:
       - dabin_network
     volumes:
       - dabin_static:/home/gis_web_1/staticfiles/
       - dabin_media:/home/gis_web_1/media/
+
+  mariadb:
+    image: mariadb:10.5
+    networks:
+      - dabin_network
+    volumes:
+      - gis_mariadb:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: pass
 
 
 networks:
@@ -27,3 +39,4 @@ networks:
 volumes:
   dabin_static:
   dabin_media:
+  gis_mariadb:
