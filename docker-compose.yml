@@ -17,8 +17,8 @@ services:
     networks:
       - dabin_network
     volumes:
-      - dabin_static:/home/gis_web_1/staticfiles/
-      - dabin_media:/home/gis_web_1/media/
+      - dabin_static:/home/gis_web_mine/staticfiles/
+      - dabin_media:/home/gis_web_mine/media/
     secrets:
       - DJANGO_SECRET_KEY
 
