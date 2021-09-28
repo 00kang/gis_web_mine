@@ -13,7 +13,7 @@ services:
       - dabin_media:/data/media/
 
   django:
-    image: dabin_django:4
+    image: dabin_django:5
     networks:
       - dabin_network
     volumes:
